@@ -1,8 +1,16 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { cache } from "react";
 import styles from "./page.module.css";
+import { GET } from "@/utils/api-calls";
+import { AuthorsResponse } from "@/utils/types";
 
-const About: React.FC = () => {
+const getAuthors = cache(async () => {
+	const authorsResp = await GET<AuthorsResponse>("/authors");
+	return authorsResp.docs;
+});
+
+const About: React.FC = async () => {
+	const authors = await getAuthors();
 	return (
 		<main>
 			<section>
@@ -50,8 +58,8 @@ const About: React.FC = () => {
 			<section>
 				<Container>
 					<Grid spacing={4} container>
-						{[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-							<Grid item xs={3} key={item}>
+						{authors.map((author) => (
+							<Grid item xs={3} key={author.id}>
 								<Box>
 									<Box
 										sx={{
@@ -59,14 +67,23 @@ const About: React.FC = () => {
 											width: "100%",
 											mb: 2.5,
 											background: "#b3bec4",
+											overflow: "hidden",
 										}}
 										className={styles.authorProfile}
-									/>
+									>
+										{author.avatar && (
+											<img
+												src={author.avatar}
+												alt={author.name}
+												className={styles.authorAvatar}
+											/>
+										)}
+									</Box>
 									<Typography variant="h5" fontSize={16} fontWeight="medium">
-										Name
+										{author.name}
 									</Typography>
 									<Typography variant="h5" fontSize={16}>
-										Affiliation
+										{author.affiliation}
 									</Typography>
 								</Box>
 							</Grid>

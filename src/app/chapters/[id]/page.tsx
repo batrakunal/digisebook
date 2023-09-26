@@ -82,33 +82,39 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 								top: "6.25rem",
 							}}
 						>
-							<Button
-								sx={{
-									color: "#283237",
-									fontSize: 20,
-									textTransform: "capitalize",
-								}}
-							>
-								Abstract
-							</Button>
-							<Button
-								sx={{
-									color: "#283237",
-									fontSize: 20,
-									textTransform: "capitalize",
-								}}
-							>
-								Leads
-							</Button>
-							<Button
-								sx={{
-									color: "#283237",
-									fontSize: 20,
-									textTransform: "capitalize",
-								}}
-							>
-								Publications
-							</Button>
+							{chapterData.abstract && (
+								<Button
+									sx={{
+										color: "#283237",
+										fontSize: 20,
+										textTransform: "capitalize",
+									}}
+								>
+									Abstract
+								</Button>
+							)}
+							{chapterData.leads && (
+								<Button
+									sx={{
+										color: "#283237",
+										fontSize: 20,
+										textTransform: "capitalize",
+									}}
+								>
+									Leads
+								</Button>
+							)}
+							{chapterData.publications && (
+								<Button
+									sx={{
+										color: "#283237",
+										fontSize: 20,
+										textTransform: "capitalize",
+									}}
+								>
+									Publications
+								</Button>
+							)}
 						</Stack>
 					</aside>
 					<Box>

@@ -71,3 +71,26 @@ export interface AbstractElementChild {
 export interface Child {
 	text: string;
 }
+
+export interface AuthorsResponse {
+	docs: Author[];
+	totalDocs: number;
+	limit: number;
+	totalPages: number;
+	page: number;
+	pagingCounter: number;
+	hasPrevPage: boolean;
+	hasNextPage: boolean;
+	prevPage: null;
+	nextPage: null;
+}
+
+export interface Author {
+	id: string;
+	name: string;
+	affiliation: string;
+	email: string;
+	createdAt: Date;
+	updatedAt: Date;
+	avatar?: string;
+}
