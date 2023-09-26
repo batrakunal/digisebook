@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Palette, useTheme } from "@mui/material";
+import { Button, Palette, PaletteColor, useTheme } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -15,16 +15,22 @@ const CustomButton: React.FC<{
 	const router = useRouter();
 	const theme = useTheme();
 
-	const [btnColor, setBtnColor] = useState<Palette>();
+	const [btnColor, setBtnColor] = useState<PaletteColor>(theme.palette.primary);
 
 	useEffect(() => {
 		if (color && color.includes(".")) {
 			const keys = color.split(".");
-			let c = theme.palette;
+			let c: PaletteColor;
 			keys.forEach((key) => {
-				c = c[key];
+				if (!c) {
+					// @ts-ignore
+					c = theme.palette[key];
+				} else {
+					// @ts-ignore
+					c = c[key];
+				}
 			});
-			setBtnColor(c);
+			setBtnColor(c!);
 		}
 	}, [color]);
 
@@ -32,6 +38,7 @@ const CustomButton: React.FC<{
 		<Button
 			variant={variant}
 			size={size}
+			// @ts-ignore
 			sx={{
 				borderColor: btnColor,
 				backgroundColor: variant === "contained" ? btnColor : "transparent",
