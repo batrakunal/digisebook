@@ -72,11 +72,12 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 				</Box>
 			</section>
 			<Container>
-				<Stack direction="row" sx={{ mt: 12.5 }} gap={15}>
+				<Stack direction="row" sx={{ mt: 12.5 }} gap={{ xs: 0, sm: 15 }}>
 					<aside>
 						<Stack
 							alignItems="flex-start"
 							sx={{
+								display: { xs: "none", sm: "block" },
 								color: "#283237",
 								position: "sticky",
 								top: "6.25rem",

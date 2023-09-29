@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
 						{/* Desktop Icon */}
 						<Box
 							sx={{
-								display: { xs: "none", md: "flex" },
+								display: "flex",
 								justifyContent: "center",
 								flex: "0 0 auto",
 								width: 100,
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
 							</Link>
 						</Box>
 						{/* User Menu */}
-						<Stack direction="row" gap={5} sx={{ flexGrow: 0 }}>
+						<Stack direction="row" gap={{ xs: 2, md: 5 }} sx={{ flexGrow: 0 }}>
 							<CustomButton sx={{ color: "#fff" }} href="/about">
 								About the Book
 							</CustomButton>

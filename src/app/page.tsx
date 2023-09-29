@@ -49,7 +49,11 @@ const Home: React.FC = async () => {
 			<section>
 				<Box className="se__bg-home">
 					<Container>
-						<Stack direction="row" gap={12} sx={{ py: "4.5rem" }}>
+						<Stack
+							direction={{ xs: "column", md: "row" }}
+							gap={12}
+							sx={{ py: "4.5rem" }}
+						>
 							<Box sx={{ width: "100%", color: "#fff" }}>
 								<Typography
 									variant="h1"
@@ -98,12 +102,19 @@ const Home: React.FC = async () => {
 								</Stack>
 							</Box>
 							<Stack justifyContent="center" alignItems="center">
-								<Image
-									src="/DigitalSE-cover-mockup.png"
-									alt="DigitalSE Book Cover Mockup"
-									width={600}
-									height={600}
-								/>
+								<Box
+									sx={{
+										position: "relative",
+										width: { xs: 300, lg: 600 },
+										height: { xs: 300, lg: 600 },
+									}}
+								>
+									<Image
+										src="/DigitalSE-cover-mockup.png"
+										alt="DigitalSE Book Cover Mockup"
+										fill
+									/>
+								</Box>
 							</Stack>
 						</Stack>
 					</Container>
@@ -118,10 +129,10 @@ const Home: React.FC = async () => {
 					className={styles["whats-inside-container"]}
 				>
 					<Container>
-						<Stack direction="row">
+						<Stack direction={{ xs: "column", md: "row" }}>
 							<Box
 								sx={{
-									pr: "10.5rem",
+									pr: { xs: "0", md: "10.5rem" },
 									width: "100%",
 								}}
 							>

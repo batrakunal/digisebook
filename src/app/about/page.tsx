@@ -59,7 +59,7 @@ const About: React.FC = async () => {
 				<Container>
 					<Grid spacing={4} container>
 						{authors.map((author) => (
-							<Grid item xs={3} key={author.id}>
+							<Grid item xs={12} sm={6} md={4} lg={3} key={author.id}>
 								<Box>
 									<Box
 										sx={{
