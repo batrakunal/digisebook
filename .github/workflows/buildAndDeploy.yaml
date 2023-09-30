@@ -8,11 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      DIGITAL_SE_CMS_ENDPOINT: ${{ secrets.DIGITAL_SE_CMS_ENDPOINT }}
-
     steps:
       - name: Check Environment Variables
+        env:
+          DIGITAL_SE_CMS_ENDPOINT: ${{ secrets.DIGITAL_SE_CMS_ENDPOINT }}
         run: |
           echo "MyEnvVar1: $DIGITAL_SE_CMS_ENDPOINT"
 
@@ -28,6 +27,8 @@ jobs:
         run: yarn install
 
       - name: Build Next.js app
+        env:
+          DIGITAL_SE_CMS_ENDPOINT: ${{ secrets.DIGITAL_SE_CMS_ENDPOINT }}
         run: yarn run build
 
       - name: Upload to S3
