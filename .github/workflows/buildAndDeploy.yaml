@@ -8,6 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      DIGITAL_SE_CMS_ENDPOINT: ${{ secrets.DIGITAL_SE_CMS_ENDPOINT }}
+
     steps:
       - name: Check Environment Variables
         run: |
