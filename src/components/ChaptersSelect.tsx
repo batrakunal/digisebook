@@ -49,6 +49,9 @@ const ChaptersSelect: React.FC<{
 						vertical: "top",
 						horizontal: "left",
 					},
+					sx: {
+						maxHeight: "400px",
+					},
 				}}
 				renderValue={(val) => {
 					const chapter = chaptersMetadata.find((c) => c.id === val);

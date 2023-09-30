@@ -5,7 +5,7 @@ import { GET } from "@/utils/api-calls";
 import { AuthorsResponse } from "@/utils/types";
 
 const getAuthors = cache(async () => {
-	const authorsResp = await GET<AuthorsResponse>("/authors");
+	const authorsResp = await GET<AuthorsResponse>("/authors?limit=100");
 	return authorsResp.docs;
 });
 

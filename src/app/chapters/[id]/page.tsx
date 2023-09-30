@@ -8,18 +8,15 @@ import {
 	Button,
 	Container,
 	Divider,
-	FormControl,
-	MenuItem,
-	Select,
 	Stack,
 	Typography,
 } from "@mui/material";
 import React, { cache } from "react";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ChaptersSelect from "@/components/ChaptersSelect";
+import ChaptersNavigation from "@/components/ChaptersNavigaton";
 
 export async function generateStaticParams() {
-	const chapters = await GET<ChaptersResponse>(`/chapters`);
+	const chapters = await GET<ChaptersResponse>(`/chapters?limit=100`);
 
 	return chapters.docs.map((chapter) => ({
 		id: chapter.id,
@@ -32,13 +29,15 @@ const getChapter = cache(async (id: string) => {
 });
 
 const getChaptersMetadata = cache(async () => {
-	const res = await GET<ChaptersResponse>(`/chapters?sort="chapter"`);
+	const res = await GET<ChaptersResponse>(`/chapters?sort="chapter"&limit=100`);
 	const chapters = res.docs;
-	return chapters.map((chapter) => ({
-		id: chapter.id,
-		name: chapter.name,
-		chapter: chapter.chapter,
-	}));
+	return chapters
+		.map((chapter) => ({
+			id: chapter.id,
+			name: chapter.name,
+			chapter: chapter.chapter,
+		}))
+		.sort((a, b) => a.chapter - b.chapter);
 });
 
 const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
@@ -81,6 +80,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 								color: "#283237",
 								position: "sticky",
 								top: "6.25rem",
+								borderLeft: "4px solid #D0D8DB",
 							}}
 						>
 							{chapterData.abstract && (
@@ -89,29 +89,36 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 										color: "#283237",
 										fontSize: 20,
 										textTransform: "capitalize",
+										borderRadius: 0,
 									}}
+									className="chapters__section--active"
+									id="abstract-btn"
 								>
 									Abstract
 								</Button>
 							)}
-							{chapterData.leads && (
+							{chapterData.leads?.length > 0 && (
 								<Button
 									sx={{
 										color: "#283237",
 										fontSize: 20,
 										textTransform: "capitalize",
+										borderRadius: 0,
 									}}
+									id="leads-btn"
 								>
 									Leads
 								</Button>
 							)}
-							{chapterData.publications && (
+							{chapterData.publications?.length > 0 && (
 								<Button
 									sx={{
 										color: "#283237",
 										fontSize: 20,
 										textTransform: "capitalize",
+										borderRadius: 0,
 									}}
+									id="publications-btn"
 								>
 									Publications
 								</Button>
@@ -119,17 +126,18 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 						</Stack>
 					</aside>
 					<Box>
-						<section>
-							<Box sx={{ mb: 10 }}>
-								<Typography
-									variant="h2"
-									fontSize={24}
-									fontWeight="medium"
-									sx={{ mb: 2 }}
-								>
-									Abstract
-								</Typography>
-								{/* {chapterData?.abstract[0]?.children?.map((node, i) => {
+						{chapterData.abstract && (
+							<section id="abstract">
+								<Box sx={{ mb: 10 }}>
+									<Typography
+										variant="h2"
+										fontSize={24}
+										fontWeight="medium"
+										sx={{ mb: 2 }}
+									>
+										Abstract
+									</Typography>
+									{/* {chapterData?.abstract[0]?.children?.map((node, i) => {
 									return (
 										<Box key={i}>
 											{node.children ? (
@@ -141,19 +149,20 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 										</Box>
 									);
 								})} */}
-								<RichTextRender abstract={chapterData?.abstract} />
-								<CustomButton
-									size="large"
-									variant="contained"
-									color="secondary.dark"
-									sx={{ color: "#fff", marginTop: "1.5rem" }}
-								>
-									Learn More About this Book
-								</CustomButton>
-							</Box>
-						</section>
+									<RichTextRender abstract={chapterData?.abstract} />
+									<CustomButton
+										size="large"
+										variant="contained"
+										color="secondary.dark"
+										sx={{ color: "#fff", marginTop: "1.5rem" }}
+									>
+										Learn More About this Book
+									</CustomButton>
+								</Box>
+							</section>
+						)}
 						{chapterData.leads && chapterData.leads.length > 0 && (
-							<section>
+							<section id="leads">
 								<Divider sx={{ my: 10 }} />
 								<Box>
 									<Typography
@@ -194,7 +203,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 						)}
 						{chapterData.publications &&
 							chapterData.publications.length > 0 && (
-								<section>
+								<section id="publications">
 									<Divider sx={{ my: 10 }} />
 									<Box>
 										<Typography
@@ -236,6 +245,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 					</Box>
 				</Stack>
 			</Container>
+			<ChaptersNavigation />
 		</main>
 	);
 };

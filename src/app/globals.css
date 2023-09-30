@@ -22,3 +22,8 @@ a {
 	background: url("/DigitalSE-BG.png") 0% 0% no-repeat padding-box;
 	background-size: cover;
 }
+
+.chapters__section--active {
+	border-left: 4px solid #40b6d6 !important;
+	margin: -4px !important;
+}
