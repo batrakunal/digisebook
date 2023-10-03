@@ -14,10 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Check Environment Variables
-        run: |
-          echo "MyEnvVar1: $DIGITAL_SE_CMS_ENDPOINT"
-
       - name: Install Node.js and Yarn
         uses: actions/setup-node@v3
         with:
