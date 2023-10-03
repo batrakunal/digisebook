@@ -38,19 +38,27 @@ const About: React.FC = async () => {
 				<Container>
 					<Box sx={{ my: "6.25rem" }}>
 						<Typography>
-							Sed sed risus pretium quam vulputate dignissim. Sed viverra ipsum
-							nunc aliquet bibendum enim facilisis gravida. Pellentesque
-							habitant morbi tristique senectus et netus. At tempor commodo
-							ullamcorper a lacus vestibulum sed. Sagittis purus sit amet
-							volutpat consequat mauris. Porta nibh venenatis cras sed felis
-							eget velit aliquet sagittis.
-						</Typography>
-						<br />
-						<Typography>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua.
-							Egestas dui id ornare arcu odio ut sem nulla. Penatibus et magnis
-							dis parturient montes nascetur ridiculus mus mauris.
+							The impact of the Systems Engineering Research Center (SERC) on
+							the state of systems engineering practice and education has been
+							profound. Examples include the Body of Knowledge for Systems
+							Engineering (SEBoK) – the most popular systems engineering website
+							in the world with over 50,000 unique visitors every month; GRCSE –
+							the first graduate reference curriculum for systems engineering;
+							the Mission-Aware Security methodology for assessing system
+							architectures for cyber-resilience; and a diversity of research
+							projects to support the transition of digital engineering from
+							strategy into practice including advanced tradespace analysis
+							methods, modeling methods for digital project workflows, digital
+							engineering measurement methods, and digital engineering
+							competencies. Therein lies the focus of this book – translating
+							some of the mature research inspired by the SERC into a compendium
+							of chapters, organized into topical clusters, for the benefit of
+							practicing engineers in industry and government. While the
+							chapters in this book are succinct and focused on the relevant
+							topic, the editor and the authors would like to provide you
+							additional resources to complement the information in the book on
+							topics of particular interest to you. That is the motivation
+							behind this web-based resource.
 						</Typography>
 					</Box>
 				</Container>
