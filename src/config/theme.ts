@@ -63,6 +63,13 @@ const theme = createTheme({
 				},
 			},
 		},
+		MuiTypography: {
+			styleOverrides: {
+				root: {
+					lineHeight: "20px",
+				},
+			},
+		},
 	},
 });
 

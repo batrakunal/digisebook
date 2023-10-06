@@ -62,6 +62,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 						<Typography
 							variant="h1"
 							fontSize={32}
+							lineHeight="24px"
 							color="white"
 							fontWeight="medium"
 						>
@@ -132,6 +133,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 									<Typography
 										variant="h2"
 										fontSize={24}
+										lineHeight="36px"
 										fontWeight="medium"
 										sx={{ mb: 2 }}
 									>
@@ -154,7 +156,11 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 										size="large"
 										variant="contained"
 										color="secondary.dark"
-										sx={{ color: "#fff", marginTop: "1.5rem" }}
+										sx={{
+											color: "#fff",
+											marginTop: "1.5rem",
+											fontSize: "14px",
+										}}
 									>
 										Learn More About this Book
 									</CustomButton>
@@ -168,6 +174,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 									<Typography
 										variant="h2"
 										fontSize={24}
+										lineHeight="36px"
 										fontWeight="medium"
 										sx={{ mb: 3 }}
 									>
@@ -190,7 +197,9 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 													<Avatar sx={{ height: 46, width: 46 }} />
 												)}
 												<Stack>
-													<Typography>{lead.name}</Typography>
+													<Typography fontWeight="medium">
+														{lead.name}
+													</Typography>
 													<Typography variant="subtitle2">
 														{lead.affiliation}
 													</Typography>
@@ -209,6 +218,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 										<Typography
 											variant="h2"
 											fontSize={24}
+											lineHeight="36px"
 											fontWeight="medium"
 											sx={{ mb: 2 }}
 										>

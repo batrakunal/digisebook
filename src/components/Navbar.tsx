@@ -11,8 +11,9 @@ const Navbar: React.FC = () => {
 	return (
 		<AppBar
 			sx={{
-				backdropFilter: "blur(20px)",
+				// backdropFilter: "blur(20px)",
 				background: "#345980",
+				boxShadow: "none",
 			}}
 			position="sticky"
 		>
@@ -45,7 +46,10 @@ const Navbar: React.FC = () => {
 						</Box>
 						{/* User Menu */}
 						<Stack direction="row" gap={{ xs: 2, md: 5 }} sx={{ flexGrow: 0 }}>
-							<CustomButton sx={{ color: "#fff" }} href="/about">
+							<CustomButton
+								sx={{ color: "#fff", fontSize: "14px" }}
+								href="/about"
+							>
 								About the Book
 							</CustomButton>
 							<Button

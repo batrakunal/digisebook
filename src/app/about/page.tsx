@@ -26,6 +26,7 @@ const About: React.FC = async () => {
 						<Typography
 							variant="h1"
 							fontSize={32}
+							lineHeight="47px"
 							color="white"
 							fontWeight="medium"
 						>
@@ -87,10 +88,15 @@ const About: React.FC = async () => {
 											/>
 										)}
 									</Box>
-									<Typography variant="h5" fontSize={16} fontWeight="medium">
+									<Typography
+										variant="h5"
+										fontSize={16}
+										lineHeight="24px"
+										fontWeight="medium"
+									>
 										{author.name}
 									</Typography>
-									<Typography variant="h5" fontSize={16}>
+									<Typography variant="h5" lineHeight="24px" fontSize={16}>
 										{author.affiliation}
 									</Typography>
 								</Box>

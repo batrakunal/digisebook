@@ -39,6 +39,7 @@ const ChaptersSelect: React.FC<{
 					color: "white",
 					textTransform: "uppercase",
 					fontSize: 20,
+					lineHeight: "24px",
 				}}
 				MenuProps={{
 					anchorOrigin: {

@@ -22,10 +22,12 @@ interface Parts {
 const getParts = cache(async () => {
 	const res = await GET<ChaptersResponse>(`/chapters?sort="chapter"&limit=100`);
 	const parts: Parts = {};
-	res.docs.forEach((doc) => {
-		if (!parts[doc.part]) parts[doc.part] = [doc];
-		else parts[doc.part].push(doc);
-	});
+	res.docs
+		.sort((a, b) => a.chapter - b.chapter)
+		.forEach((doc) => {
+			if (!parts[doc.part]) parts[doc.part] = [doc];
+			else parts[doc.part].push(doc);
+		});
 	return parts;
 });
 
@@ -57,7 +59,8 @@ const Home: React.FC = async () => {
 							<Box sx={{ width: "100%", color: "#fff" }}>
 								<Typography
 									variant="h1"
-									fontSize={40}
+									fontSize={36}
+									lineHeight="56px"
 									fontWeight="bold"
 									sx={{ mb: 5 }}
 								>
@@ -121,6 +124,15 @@ const Home: React.FC = async () => {
 									}}
 								>
 									<Image
+										src="/Light-01.png"
+										alt="halo"
+										style={{
+											left: "30%",
+											top: "-25%",
+										}}
+										fill
+									/>
+									<Image
 										src="/DigitalSE-cover-mockup.png"
 										alt="DigitalSE Book Cover Mockup"
 										fill
@@ -150,12 +162,13 @@ const Home: React.FC = async () => {
 								<Box
 									sx={{
 										position: "sticky",
-										top: "5rem",
+										top: "9.125rem",
 									}}
 								>
 									<Typography
 										variant="h1"
-										fontSize={32}
+										fontSize={28}
+										lineHeight="41px"
 										fontWeight="bold"
 										sx={{
 											mb: 3,
@@ -182,6 +195,17 @@ const Home: React.FC = async () => {
 										you. This information may be updated occasionally by the
 										chapter authors.
 									</Typography>
+									<CustomButton
+										variant="contained"
+										color="secondary.dark"
+										sx={{
+											color: "white",
+											mt: "20px",
+											fontSize: "12px",
+										}}
+									>
+										See Cluster Leaders
+									</CustomButton>
 								</Box>
 							</Box>
 							<Box
@@ -195,6 +219,7 @@ const Home: React.FC = async () => {
 											<Typography
 												variant="h2"
 												fontSize={20}
+												lineHeight="30px"
 												fontWeight="bold"
 												sx={{ mb: 3.125 }}
 											>
@@ -202,6 +227,7 @@ const Home: React.FC = async () => {
 													component="span"
 													color="secondary"
 													fontSize={20}
+													lineHeight="30px"
 													fontWeight="bold"
 													fontFamily="inherit"
 												>
@@ -213,23 +239,33 @@ const Home: React.FC = async () => {
 											<Stack gap={2.5}>
 												{c.map((chapter) => (
 													<Box key={chapter.chapter}>
-														<Typography variant="h3" fontSize={14}>
+														<Typography
+															variant="h3"
+															fontSize={14}
+															lineHeight="21px"
+														>
 															CHAPTER {chapter.chapter}
 														</Typography>
-														<Stack
-															direction="row"
-															justifyContent="space-between"
-															alignItems="flex-end"
+														<Link
+															href={`/chapters/${chapter.id}`}
+															style={{
+																height: 24,
+																textDecoration: "none",
+															}}
 														>
-															<Typography variant="h3" fontSize={16}>
-																{chapter.name}
-															</Typography>
-															<Link
-																href={`/chapters/${chapter.id}`}
-																style={{
-																	height: 24,
-																}}
+															<Stack
+																direction="row"
+																justifyContent="space-between"
+																alignItems="flex-end"
 															>
+																<Typography
+																	variant="h3"
+																	fontSize={16}
+																	lineHeight="24px"
+																>
+																	{chapter.name}
+																</Typography>
+
 																<ArrowForwardIcon />
 																{/* <IconButton
 																onClick={() => {
@@ -237,8 +273,8 @@ const Home: React.FC = async () => {
 																}}
 															>
 															</IconButton> */}
-															</Link>
-														</Stack>
+															</Stack>
+														</Link>
 														<Divider sx={{ mt: 1.25 }} />
 													</Box>
 												))}

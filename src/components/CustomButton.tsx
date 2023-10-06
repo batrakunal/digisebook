@@ -43,6 +43,7 @@ const CustomButton: React.FC<{
 				borderColor: btnColor,
 				backgroundColor: variant === "contained" ? btnColor : "transparent",
 				color: btnColor,
+				fontSize: 16,
 				...sx,
 			}}
 			onClick={() => {
