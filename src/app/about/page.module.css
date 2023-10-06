@@ -1,8 +1,9 @@
 .authorProfile {
 	position: relative;
+	border-radius: 50%;
 }
 
-.authorProfile:before {
+/* .authorProfile:before {
 	content: "";
 	position: absolute;
 	width: 0;
@@ -40,7 +41,7 @@
 	right: 0;
 	border-bottom: 20px solid #f8f8f8;
 	border-left: 20px solid transparent;
-}
+} */
 
 .authorAvatar {
 	width: 100%;
