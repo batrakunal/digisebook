@@ -11,11 +11,27 @@ const CustomButton: React.FC<{
 	href?: string;
 	sx?: { [key: string]: string };
 	color?: string;
-}> = ({ variant, size, href, sx = {}, color, children }) => {
+	isExternal?: boolean;
+}> = ({
+	variant,
+	size,
+	href,
+	sx = {},
+	color,
+	isExternal = false,
+	children,
+}) => {
 	const router = useRouter();
 	const theme = useTheme();
 
 	const [btnColor, setBtnColor] = useState<PaletteColor>(theme.palette.primary);
+
+	function openLinkInNewTab(href: string) {
+		const newTab = window.open(href, "_blank");
+		if (newTab) {
+			newTab.opener = null;
+		}
+	}
 
 	useEffect(() => {
 		if (color && color.includes(".")) {
@@ -47,7 +63,10 @@ const CustomButton: React.FC<{
 				...sx,
 			}}
 			onClick={() => {
-				if (href) router.push(href);
+				if (href) {
+					if (isExternal) openLinkInNewTab(href);
+					else router.push(href);
+				}
 			}}
 		>
 			{children}

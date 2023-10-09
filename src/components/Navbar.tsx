@@ -52,12 +52,18 @@ const Navbar: React.FC = () => {
 							>
 								About the Book
 							</CustomButton>
-							<Button
+							<CustomButton
 								variant="contained"
-								sx={{ background: "#203147", color: "#fff" }}
+								sx={{
+									background: "#203147",
+									color: "#fff",
+									fontSize: "14px",
+								}}
+								href="https://wolbookstore.wiley.com/CGI-BIN/lansaweb?procfun+bookseller+bksfn07+funcparms+WOLBKS(A0010):Y"
+								isExternal
 							>
-								Buy Book
-							</Button>
+								Buy the Book
+							</CustomButton>
 						</Stack>
 					</Stack>
 				</Toolbar>

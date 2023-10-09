@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
 			}}
 		>
 			<Container sx={{ py: 7.5, color: "#fff" }}>
-				<Stack direction="row" gap={5}>
+				<Stack direction={{ xs: "column", sm: "row" }} gap={5}>
 					<img
 						src="/SERC-Primary-logo_4C-WHT.png"
 						alt="SERC Logo"
@@ -33,7 +33,11 @@ const Footer: React.FC = () => {
 						<br />
 						<Stack direction="row" gap={1}>
 							<Typography>Follow us on </Typography>
-							<Link href="/">
+							<a
+								href="https://www.linkedin.com/company/systemsengineeringresearchcenter/"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								<img
 									src="/LinkedIn.svg"
 									alt="LinkedIn"
@@ -42,7 +46,7 @@ const Footer: React.FC = () => {
 										height: 24,
 									}}
 								/>
-							</Link>
+							</a>
 						</Stack>
 					</Box>
 				</Stack>

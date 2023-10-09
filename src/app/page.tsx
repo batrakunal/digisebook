@@ -50,7 +50,11 @@ const Home: React.FC = async () => {
 		<main>
 			<section>
 				<Box className="se__bg-home">
-					<Container>
+					<Container
+						sx={{
+							overflowX: "hidden",
+						}}
+					>
 						<Stack
 							direction={{ xs: "column", md: "row" }}
 							gap={12}
@@ -100,8 +104,9 @@ const Home: React.FC = async () => {
 										sx={{
 											color: "white",
 										}}
+										href="/about"
 									>
-										Learn More the Book
+										About the Book
 									</CustomButton>
 									<CustomButton
 										size="large"
@@ -110,8 +115,10 @@ const Home: React.FC = async () => {
 										sx={{
 											color: "white",
 										}}
+										href="https://wolbookstore.wiley.com/CGI-BIN/lansaweb?procfun+bookseller+bksfn07+funcparms+WOLBKS(A0010):Y"
+										isExternal
 									>
-										Buy Now
+										Buy the Book
 									</CustomButton>
 								</Stack>
 							</Box>
@@ -203,6 +210,7 @@ const Home: React.FC = async () => {
 											mt: "20px",
 											fontSize: "12px",
 										}}
+										href="/about"
 									>
 										See Cluster Leaders
 									</CustomButton>
