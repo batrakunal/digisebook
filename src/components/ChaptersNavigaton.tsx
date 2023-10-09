@@ -20,7 +20,11 @@ const ChaptersNavigation: React.FC = () => {
 			btn: HTMLElement | null,
 			section: HTMLElement | null
 		) => {
-			section?.scrollIntoView({ behavior: "smooth", block: "center" });
+			section?.scrollIntoView({
+				behavior: "smooth",
+				block: "start",
+				inline: "nearest",
+			});
 			btn?.classList.add("chapters__section--active");
 			currentlyActive?.classList.remove("chapters__section--active");
 			currentlyActive = btn!;

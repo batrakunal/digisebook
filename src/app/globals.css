@@ -18,9 +18,14 @@ a {
 	color: initial;
 }
 
+a:hover {
+	color: #40b6d6;
+}
+
 .se__bg-home {
 	background: url("/DigitalSE-BG.png") 0% 0% no-repeat padding-box;
 	background-size: cover;
+	overflow-x: hidden;
 }
 
 .chapters__section--active {

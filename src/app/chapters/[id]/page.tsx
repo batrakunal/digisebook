@@ -72,7 +72,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 				</Box>
 			</section>
 			<Container>
-				<Stack direction="row" sx={{ mt: 12.5 }} gap={{ xs: 0, sm: 15 }}>
+				<Stack direction="row" sx={{ mt: 2.5 }} gap={{ xs: 0, sm: 15 }}>
 					<aside>
 						<Stack
 							alignItems="flex-start"
@@ -82,6 +82,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 								position: "sticky",
 								top: "6.25rem",
 								borderLeft: "4px solid #D0D8DB",
+								mt: 10,
 							}}
 						>
 							{chapterData.abstract && (
@@ -129,7 +130,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 					<Box>
 						{chapterData.abstract && (
 							<section id="abstract">
-								<Box sx={{ mb: 10 }}>
+								<Box sx={{ mb: 10, pt: 10 }}>
 									<Typography
 										variant="h2"
 										fontSize={24}
@@ -152,7 +153,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 									);
 								})} */}
 									<RichTextRender abstract={chapterData?.abstract} />
-									<CustomButton
+									{/* <CustomButton
 										size="large"
 										variant="contained"
 										color="secondary.dark"
@@ -163,7 +164,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 										}}
 									>
 										Learn More About this Book
-									</CustomButton>
+									</CustomButton> */}
 								</Box>
 							</section>
 						)}
@@ -238,7 +239,11 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 													>
 														<Typography>
 															{publication.url ? (
-																<a href={publication.url} target="_blank">
+																<a
+																	href={publication.url}
+																	target="_blank"
+																	rel="noopener noreferrer"
+																>
 																	{publication.name}
 																</a>
 															) : (

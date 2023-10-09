@@ -50,11 +50,7 @@ const Home: React.FC = async () => {
 		<main>
 			<section>
 				<Box className="se__bg-home">
-					<Container
-						sx={{
-							overflowX: "hidden",
-						}}
-					>
+					<Container>
 						<Stack
 							direction={{ xs: "column", md: "row" }}
 							gap={12}
