@@ -39,27 +39,44 @@ const About: React.FC = async () => {
 				<Container>
 					<Box sx={{ my: "6.25rem" }}>
 						<Typography>
-							The impact of the Systems Engineering Research Center (SERC) on
-							the state of systems engineering practice and education has been
-							profound. Examples include the Body of Knowledge for Systems
-							Engineering (SEBoK) – the most popular systems engineering website
-							in the world with over 50,000 unique visitors every month; GRCSE –
-							the first graduate reference curriculum for systems engineering;
-							the Mission-Aware Security methodology for assessing system
-							architectures for cyber-resilience; and a diversity of research
-							projects to support the transition of digital engineering from
-							strategy into practice including advanced tradespace analysis
-							methods, modeling methods for digital project workflows, digital
-							engineering measurement methods, and digital engineering
-							competencies. Therein lies the focus of this book – translating
-							some of the mature research inspired by the SERC into a compendium
-							of chapters, organized into topical clusters, for the benefit of
-							practicing engineers in industry and government. While the
-							chapters in this book are succinct and focused on the relevant
-							topic, the editor and the authors would like to provide you
-							additional resources to complement the information in the book on
-							topics of particular interest to you. That is the motivation
-							behind this web-based resource.
+							The Systems Engineering Research Center (SERC) was established in
+							the Fall of 2008 as a government-designated University Affiliated
+							Research Center (UARC). The SERC has produced 15 years of
+							research, focused on an updated systems engineering toolkit
+							(methods, tools, and practices) for the complex cyber-physical
+							systems of today and tomorrow. The principal sponsor of the SERC
+							is the Office of the Under-Secretary of Defense for Research and
+							Engineering in the U.S. Department of Defense. A unique governance
+							element of the SERC is its establishment as a national network of
+							preeminent universities in the United States focused on systems
+							research.
+							<br />
+							<br />
+							The impact of the SERC on the state of systems engineering
+							practice and education has been profound. Examples include the
+							Body of Knowledge for Systems Engineering (SEBoK) – the most
+							popular systems engineering website in the world with over 50,000
+							unique visitors every month; GRCSE – the first graduate reference
+							curriculum for systems engineering; the Mission-Aware Security
+							methodology for assessing system architectures for
+							cyber-resilience; and a diversity of research projects to support
+							the transition of digital engineering from strategy into practice
+							including advanced tradespace analysis methods, modeling methods
+							for digital project workflows, digital engineering measurement
+							methods, and digital engineering competencies. Therein lies the
+							focus of this book – translating some of the mature research
+							inspired by the SERC into a compendium of chapters, organized into
+							topical clusters, for the benefit of practicing engineers in
+							industry and government.
+							<br />
+							<br />
+							This book features a total of 41 chapters, organized into eight
+							topical clusters. Each of these chapter clusters was organized and
+							edited by the following cluster leaders: Mark Blackburn, Nicole
+							Hutchison, and Tom McDermott of Stevens Institute of Technology;
+							Dan DeLaurentis of Purdue University; Val Sitterle of Georgia Tech
+							Research Institute; and Jon Wade of the University of California –
+							San Diego.
 						</Typography>
 					</Box>
 				</Container>
