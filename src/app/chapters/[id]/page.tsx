@@ -1,4 +1,3 @@
-import CustomButton from "@/components/CustomButton";
 import RichTextRender from "@/components/RichTextRender";
 import { GET } from "@/utils/api-calls";
 import { Chapter, ChaptersResponse } from "@/utils/types";
@@ -62,7 +61,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 						<Typography
 							variant="h1"
 							fontSize={32}
-							lineHeight="24px"
+							lineHeight="32px"
 							color="white"
 							fontWeight="medium"
 						>
@@ -127,7 +126,12 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 							)}
 						</Stack>
 					</aside>
-					<Box>
+					<Box
+						sx={{
+							maxWidth: "100%",
+							overflow: "hidden",
+						}}
+					>
 						{chapterData.abstract && (
 							<section id="abstract">
 								<Box sx={{ mb: 10, pt: 10 }}>
@@ -195,9 +199,12 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 														src={lead.avatar}
 													/>
 												) : (
-													<Avatar sx={{ height: 46, width: 46 }} />
+													<Avatar
+														src="/Bio-placeholder.png"
+														sx={{ height: 46, width: 46 }}
+													/>
 												)}
-												<Stack>
+												<Stack sx={{ pt: "3px" }}>
 													<Typography fontWeight="medium">
 														{lead.name}
 													</Typography>
@@ -225,11 +232,7 @@ const Chapter: React.FC<{ params: { id: string } }> = async ({ params }) => {
 										>
 											Publications
 										</Typography>
-										<ol
-											style={{
-												paddingInlineStart: 20,
-											}}
-										>
+										<ol>
 											{chapterData?.publications?.map((publication) => {
 												return (
 													<li
