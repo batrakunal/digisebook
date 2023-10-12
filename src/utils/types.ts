@@ -89,7 +89,6 @@ export interface Author {
 	id: string;
 	name: string;
 	affiliation: string;
-	email: string;
 	createdAt: Date;
 	updatedAt: Date;
 	avatar?: string;

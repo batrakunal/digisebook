@@ -20,7 +20,7 @@ interface Parts {
 }
 
 const getParts = cache(async () => {
-	const res = await GET<ChaptersResponse>(`/chapters?sort="chapter"&limit=100`);
+	const res = await GET<ChaptersResponse>(`/chapters?sort=chapter&limit=100`);
 	const parts: Parts = {};
 	res.docs
 		.sort((a, b) => a.chapter - b.chapter)

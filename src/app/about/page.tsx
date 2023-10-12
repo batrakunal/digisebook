@@ -2,11 +2,33 @@ import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import React, { cache } from "react";
 import styles from "./page.module.css";
 import { GET } from "@/utils/api-calls";
-import { AuthorsResponse } from "@/utils/types";
+import { Author, AuthorsResponse } from "@/utils/types";
 
 const getAuthors = cache(async () => {
-	const authorsResp = await GET<AuthorsResponse>("/authors?limit=100");
-	return authorsResp.docs;
+	const authorsResp = await GET<AuthorsResponse>(
+		`/authors?sort=name&limit=100`
+	);
+	const sortByLastName = (a: Author, b: Author) => {
+		const lastNameA = a.name.split(" ").pop()!;
+		const lastNameB = b.name.split(" ").pop()!;
+		return lastNameA.localeCompare(lastNameB);
+	};
+	let authors = authorsResp.docs.sort(sortByLastName);
+	const customOrder: Array<string | Author> = [
+		"Mark R. Blackburn",
+		"Nicole Hutchison",
+		"Tom A. McDermott",
+		"Daniel DeLaurentis",
+		"Valerie B. Sitterle",
+		"Jon Wade",
+	];
+	authors = authors.filter((a) => {
+		const i = customOrder.indexOf(a.name);
+		if (i < 0) return true;
+		customOrder[i] = a;
+		return false;
+	});
+	return [...(customOrder as Author[]), ...authors];
 });
 
 const About: React.FC = async () => {

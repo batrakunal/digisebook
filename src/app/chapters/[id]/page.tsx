@@ -28,7 +28,7 @@ const getChapter = cache(async (id: string) => {
 });
 
 const getChaptersMetadata = cache(async () => {
-	const res = await GET<ChaptersResponse>(`/chapters?sort="chapter"&limit=100`);
+	const res = await GET<ChaptersResponse>(`/chapters?sort=chapter&limit=100`);
 	const chapters = res.docs;
 	return chapters
 		.map((chapter) => ({
