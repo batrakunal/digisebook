@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
 	return (
 		<Box
 			sx={{
-				background: "#203147",
+				background: "#111314",
 				mt: 13.5,
 			}}
 		>

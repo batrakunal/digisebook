@@ -86,11 +86,11 @@ const Home: React.FC = async () => {
 									into a compendium of chapters, organized into topical
 									clusters, for the benefit of practicing engineers in industry
 									and government. While the chapters in this book are succinct
-									and focused on the relevant topic, the editor and the authors
-									would like to provide you additional resources to complement
-									the information in the book on topics of particular interest
-									to you. That is the motivation behind this web-based resource.
-									Hope you find it useful.
+									and focused on the relevant topic, editor Dinesh Verma and the
+									authors would like to provide you additional resources to
+									complement the information in the book on topics of particular
+									interest to you. That is the motivation behind this web-based
+									resource. Hope you find it useful.
 								</Typography>
 								<Stack direction="row" gap={2} sx={{ mt: 5 }}>
 									<CustomButton
