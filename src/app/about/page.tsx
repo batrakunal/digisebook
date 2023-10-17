@@ -14,7 +14,7 @@ const getAuthors = cache(async () => {
 		return lastNameA.localeCompare(lastNameB);
 	};
 	let authors = authorsResp.docs.sort(sortByLastName);
-	const customOrder: Array<string | Author> = [
+	const clusterEditors: Array<string | Author> = [
 		"Mark R. Blackburn",
 		"Nicole Hutchison",
 		"Tom A. McDermott",
@@ -22,17 +22,74 @@ const getAuthors = cache(async () => {
 		"Valerie B. Sitterle",
 		"Jon Wade",
 	];
+	const executiveEditors: Author[] = [];
+	const projectManagers: Author[] = [];
 	authors = authors.filter((a) => {
-		const i = customOrder.indexOf(a.name);
-		if (i < 0) return true;
-		customOrder[i] = a;
-		return false;
+		const i = clusterEditors.indexOf(a.name);
+		if (i >= 0) {
+			clusterEditors[i] = a;
+			return false;
+		} else if (a.role === "executiveEditor") {
+			executiveEditors.push(a);
+			return false;
+		} else if (a.role === "projectManager") {
+			projectManagers.push(a);
+			return false;
+		}
+		return true;
 	});
-	return [...(customOrder as Author[]), ...authors];
+	return {
+		clusterEditors: clusterEditors as Author[],
+		authors,
+		executiveEditors,
+		projectManagers,
+	};
 });
 
+const Author: React.FC<{ author: Author }> = ({ author }) => (
+	<Box>
+		<Stack direction="row" alignItems="center" gap={4}>
+			<Box
+				sx={{
+					width: 108,
+					height: 108,
+					overflow: "hidden",
+				}}
+				className={styles.authorProfile}
+			>
+				<img
+					src={author.avatar || "/Bio-placeholder.png"}
+					alt={author.name}
+					className={styles.authorAvatar}
+				/>
+			</Box>
+			<Box>
+				<Typography
+					variant="h5"
+					fontSize={16}
+					lineHeight="24px"
+					fontWeight="medium"
+				>
+					{author.name}
+				</Typography>
+				<Typography variant="h5" lineHeight="24px" fontSize={16}>
+					{author.affiliation}
+				</Typography>
+			</Box>
+		</Stack>
+	</Box>
+);
+
 const About: React.FC = async () => {
-	const authors = await getAuthors();
+	const { clusterEditors, authors, executiveEditors, projectManagers } =
+		await getAuthors();
+
+	const authorComponent = (author: Author) => (
+		<Grid item xs={12} sm={6} md={4} lg={4} key={author.id}>
+			<Author author={author} />
+		</Grid>
+	);
+
 	return (
 		<main>
 			<section>
@@ -106,41 +163,55 @@ const About: React.FC = async () => {
 			<section>
 				<Container>
 					<Grid spacing={4} container>
-						{authors.map((author) => (
-							<Grid item xs={12} sm={6} md={4} lg={4} key={author.id}>
-								<Box>
-									<Stack direction="row" alignItems="center" gap={4}>
-										<Box
-											sx={{
-												width: 108,
-												height: 108,
-												overflow: "hidden",
-											}}
-											className={styles.authorProfile}
-										>
-											<img
-												src={author.avatar || "/Bio-placeholder.png"}
-												alt={author.name}
-												className={styles.authorAvatar}
-											/>
-										</Box>
-										<Box>
-											<Typography
-												variant="h5"
-												fontSize={16}
-												lineHeight="24px"
-												fontWeight="medium"
-											>
-												{author.name}
-											</Typography>
-											<Typography variant="h5" lineHeight="24px" fontSize={16}>
-												{author.affiliation}
-											</Typography>
-										</Box>
-									</Stack>
-								</Box>
+						<Grid item xs={12}>
+							<Typography
+								variant="h2"
+								fontSize={24}
+								fontWeight="normal"
+								sx={{ mb: 1 }}
+							>
+								Cluster Editors
+							</Typography>
+						</Grid>
+						{clusterEditors.map(authorComponent)}
+						<Grid item xs={12}>
+							<Typography
+								variant="h2"
+								fontSize={24}
+								fontWeight="normal"
+								sx={{ mt: 3.5, mb: 1 }}
+							>
+								Authors
+							</Typography>
+						</Grid>
+						{authors.map(authorComponent)}
+						<Grid item xs={12} sx={{ my: -4 }} />
+						{executiveEditors?.length > 0 && (
+							<Grid item xs={12} sm={6} md={4} lg={4}>
+								<Typography
+									variant="h2"
+									fontSize={24}
+									fontWeight="normal"
+									sx={{ mt: 3.5, mb: 5 }}
+								>
+									Executive Editor
+								</Typography>
+								<Author author={executiveEditors[0]} />
 							</Grid>
-						))}
+						)}
+						{projectManagers?.length > 0 && (
+							<Grid item xs={12} sm={6} md={4} lg={4}>
+								<Typography
+									variant="h2"
+									fontSize={24}
+									fontWeight="normal"
+									sx={{ mt: 3.5, mb: 5 }}
+								>
+									Project Manager
+								</Typography>
+								<Author author={projectManagers[0]} />
+							</Grid>
+						)}
 					</Grid>
 				</Container>
 			</section>

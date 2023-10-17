@@ -92,4 +92,5 @@ export interface Author {
 	createdAt: Date;
 	updatedAt: Date;
 	avatar?: string;
+	role: "clusterEditor" | "author" | "executiveEditor" | "projectManager";
 }
